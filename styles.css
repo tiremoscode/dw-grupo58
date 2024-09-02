@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Matemasie&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    background-color: #FFF;
+}
+
+/* Comentarios */
+
+/**
+* este va a ser
+* un comentario que involucra
+* un 
+* monton 
+* de líneas
+*/
+
+
+header {
+    background-color: #6A9C89;
+}
+
+footer {
+    background-color: #79db0a;
+}
+
+.div1 {
+    background-color: #b3dfff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.div_paddings {
+    background-color: red;
+    padding: 20px;
+}
+
+.div_margins {
+    background-color: blue;
+    color: #FFF;
+    margin: 20px;
+}
+
+.div_container {
+    background-color: red;
+    color: #FFF;
+}
+
+.div_container-md {
+    background-color: greenyellow;
+    color: #FFF;
+}
+
+.div_container-lg {
+    background-color: blue;
+    color: #FFF;
+}
+
+.div_container-fluid {
+    background-color: purple;
+    color: #FFF;
+}
+
+.color1 {
+    background-color: red;
+    color: #FFF;
+}
+
+.color2 {
+    background-color: green;
+    color: #FFF;
+}
+
+.color3 {
+    background-color: blue;
+    color: #FFF;
+}
+
+.divisor {
+    margin-top: 10px;
+}
+
+.logoContainer {
+    width: 300px;
+    height: 169px;
+    border: 0px solid red;
+    max-width: 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.enlaces {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.enlaces ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
