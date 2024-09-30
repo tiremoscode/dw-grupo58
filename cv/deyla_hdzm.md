@@ -1,6 +1,6 @@
 # CV de Deyla Hernandez Mata <3
 
-**Nombre:** Deyla Hernandez Maa
+**Nombre:** Deyla Hernandez Mata
 **Estado:** Tamaulipas
 **Ciudad:** Matamoros
 **Correo electrónico:** deylahdzm11@gmail.com
