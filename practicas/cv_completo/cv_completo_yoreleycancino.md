@@ -1,6 +1,6 @@
 # Yoreley Cancino Villafañez
-- **Email:** tu-email@ejemplo.com
-- **Ubicación:** Ciudad, País
+- **Email:** yoreleyedu@gmail.com
+- **Ubicación:** Tijuana, B.C.
 - **LinkedIn:** [No_tengo_pero_es_ejemplo](https://linkedin.com)
 
 ## About Me
