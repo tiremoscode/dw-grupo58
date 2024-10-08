@@ -43,6 +43,17 @@
 
 ---
 
+## Tech Stacks
+
+### Lenguajes de programacion
+ [![My Skills](https://skillicons.dev/icons?i=cpp,c,cs,python,)](https://skillicons.dev)
+
+### Desarrollo Web
+
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,bootstrap,tailwind,react,vue,vite)](https://skillicons.dev)
+
+---
+
 ## 🤝 Voluntariado
 
 - Apoyo a un refugio de perros con soluciones tecnológicas para el proceso de adopción.
