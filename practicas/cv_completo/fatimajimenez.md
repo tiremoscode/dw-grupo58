@@ -4,7 +4,6 @@
 [GitHub]( https://github.com/FattiJim)  
 Correo electrónico: jimenezbazanfatima@gmail.com  
 Ubicación: Puebla, México
-
 ---
 
 ## 🎯 **Perfil Profesional**
