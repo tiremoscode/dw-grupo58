@@ -3,7 +3,6 @@
 **Ingeniera en Tecnologías de la Información | Desarrolladora Web Fullstack**  
 [GitHub]( https://github.com/FattiJim)  
 Correo electrónico: jimenezbazanfatima@gmail.com  
-Teléfono: +52 22 21 59 31 24
 Ubicación: Puebla, México
 
 ---
