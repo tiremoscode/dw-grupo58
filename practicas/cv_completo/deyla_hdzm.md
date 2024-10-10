@@ -62,5 +62,5 @@
 
 ## 🌐 Find Me Online
 
-- [LinkedIn](www.linkedin.com/in/deyla-hernández-mata-005197276)  
+- [LinkedIn](https://www.linkedin.com/in/deyla-hernández-mata-005197276)  
 - [Instagram](https://www.instagram.com/deemeh._/profilecard/?igsh=MXU1NmxpNnNnMW5nYg%3D%3D)
