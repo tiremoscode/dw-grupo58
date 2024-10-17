@@ -1,0 +1,5 @@
+# 1. ¿Cuál será el resultado del primer console.log fuera del primer bucle (variable j).
+_Respuesta:_ Se va a mostrar en consola el valor de **j** que es "3" porque se le agrega un +1 al valor máximo que es 2 dentro del bucle. Esto sucede ya que al ser una variable var es indiferente si la variable fue declarada únicamente dentro del primer bucle.
+
+# 2. ¿Qué va a ocurrir en el segundo console.log fuera del segundo bucle (variable k).
+_Respuesta:_ Va a arrojar un error en el segundo console.log, ya que la variable let sólo puede funcionar en el primer console.log porque se encuentran dentro ambos, la variable y el console dentro del mismo bucle. Por otro lado, al no estar declarada la variable fuera del bucle, va a arrojar el error de que no se ha definido la variable k. y no se obtendrá el resultado de for. 
