@@ -6,30 +6,16 @@ const rl = readline.createInterface({
 });
 
 
-const nombre = 'Diana';
-const apellidoPaterno = 'Fuentes';
-const apellidoMaterno = 'Servin';
-const diaDeNacimiento = '10';
-const mesDeNacimiento = '09';
-const anoDeNacimiento = '98';
-
-
 function devuelveNCaracteres(texto, numeroCaracteres = 1) {
-    const arreglo = Array.from(texto.trim());
-    if (numeroCaracteres === 1) return arreglo[0].toUpperCase();
-
-    let nuevoTexto = arreglo[0].toUpperCase();
-    for (let indice = 1; indice < arreglo.length; indice++) {
-        if (['A', 'E', 'I', 'O', 'U'].includes(arreglo[indice].toUpperCase())) {
-            nuevoTexto += arreglo[indice].toUpperCase();
-        } if (nuevoTexto.length === numeroCaracteres) break;
+    const arreglo = texto.trim().toUpperCase().split('');
+    let nuevoTexto = arreglo[0];
+    for (let indice = 1; indice < arreglo.length && nuevoTexto.length < numeroCaracteres; indice++) {
+        if (['A', 'E', 'I', 'O', 'U'].includes(arreglo[indice])) {
+            nuevoTexto += arreglo[indice];
+        } 
     }
     return nuevoTexto;
 }
-
-
-
-
 
 rl.question('Ingresa tu nombre: ', (nombre) => {
     rl.question('Ingresa tu primer apellido: ', (apellidoPaterno) => {
