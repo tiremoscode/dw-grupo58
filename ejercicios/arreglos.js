@@ -17,7 +17,7 @@
 // crear un nuevo arreglo
 
 // Usando la notación de corchetes
-const alumnasConDisfraz = ['Yoreley', 'Liliana', 'Cristel', 'Ximena Padrón', 'Ximena Tores', 'Natalia', 'Fati', 'Elizabeth'];
+const alumnasConDisfraz = ['Diana Vergara', 'Yoreley', 'Liliana', 'Cristel', 'Ximena Padrón', 'Ximena Tores', 'Natalia', 'Fati', 'Elizabeth'];
 
 // Usando un constructor Array.
 const frutasArray = new Array('melón', 'sandía', 'kiwi');
