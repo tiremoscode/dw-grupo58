@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/5/vapor/bootstrap.min.css">
+    <title>Libros</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand">Catálogo de Libros</a>
+        </div>
+    </nav>
+
+    <!-- Formulario para agregar libros -->
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card border-dark">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Agregar libro</h4>
+                        <form id="book-form">
+                            <div class="form-group p-2">
+                                <input type="text" id="titulo" class="form-control" placeholder="Título del libro" autofocus>
+                            </div>
+                            <div class="form-group p-2">
+                                <input type="text" id="autor" class="form-control" placeholder="Autor del libro">
+                            </div>
+                            <div class="form-group p-2">
+                                <input type="text" id="editorial" class="form-control" placeholder="Editorial del libro">
+                            </div>
+                            <div class="form-group p-2">
+                                <input type="text" id="anio" class="form-control" placeholder="Año de publicación">
+                            </div>
+                            <div class="form-group p-2">
+                                <input type="text" id="genero" class="form-control" placeholder="Género del libro">
+                            </div>
+                            <div class="form-group p-2">
+                                <button type="button" class="btn btn-success btn-block mt-3" onclick="addBook()">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de libros -->
+            <div class="col-md-8">
+                <h3>Lista de Libros</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Editorial</th>
+                            <th>Año</th>
+                            <th>Género</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="book-list"> </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="js/crud.js"></script>
+</body>
+
+</html>
