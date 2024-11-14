@@ -1,0 +1,26 @@
+/* Propiedades clave en Flexbox 
+- display: flex. Activa el modelo de diseño flexible en el contenedor.
+- justify-content. Alinea los elementos a lo largo del eje seleccionado (por defecto, el eje
+se vuelve de manera horizontal).
+align-items. Alinea los elementos a lo largo del eje transversal (por defecto, el ejec es vertical).
+- flex-direction. Establece la dirección del eje princiapl (row, column).
+*/
+
+.alumnasGrupo58 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    background-color: lightcoral;
+    flex-direction: column;
+}
+
+.alumna {
+    width: 100px;
+    height: 100px;
+    background-color: lightgray;
+    color: #000;
+    text-align: center;
+    line-height: 100px;
+    /* Centrar texto de manera vertical*/
+}
