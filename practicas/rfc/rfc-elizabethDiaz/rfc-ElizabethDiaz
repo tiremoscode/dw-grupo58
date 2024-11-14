@@ -1,0 +1,52 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function extraerInicialesConVocal(texto) {
+    // Convierte a mayúsculas y elimina espacios
+    const letras = texto.trim().toUpperCase();
+    let resultado = letras.charAt(0); // Primera letra
+
+    // Busca la primera vocal después de la primera letra
+    for (let i = 1; i < letras.length; i++) {
+        if ('AEIOU'.includes(letras[i])) {
+            resultado += letras[i];
+            break;
+        }
+    }
+    return resultado;
+}
+
+function generarRFC(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio) {
+    const partePaterno = extraerInicialesConVocal(apellidoPaterno);
+    const parteMaterno = apellidoMaterno.trim().toUpperCase().charAt(0) || ''; // Primera letra o vacío
+    const parteNombre = nombre.trim().toUpperCase().charAt(0);
+
+    // Formato: última parte de RFC
+    return `${partePaterno}${parteMaterno}${parteNombre}${anio}${mes}${dia}`;
+}
+
+rl.question('Ingresa tu nombre: ', (nombre) => {
+    rl.question('Ingresa tu primer apellido: ', (apellidoPaterno) => {
+        rl.question('Ingresa tu segundo apellido: ', (apellidoMaterno) => {
+            rl.question('Ingresa tu día de nacimiento (DD): ', (dia) => {
+                rl.question('Ingresa tu mes de nacimiento (MM): ', (mes) => {
+                    rl.question('Ingresa los dos últimos dígitos de tu año de nacimiento (AA): ', (anio) => {
+                        if (anio.length !== 2) {
+                            console.error('El año debe tener exactamente 2 dígitos.');
+                            rl.close();
+                            return;
+                        }
+
+                        const rfc = generarRFC(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio);
+                        console.log(`Tu RFC es: ${rfc}-XXX`);
+                        rl.close();
+                    });
+                });
+            });
+        });
+    });
+});
