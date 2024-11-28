@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+.operation {
+    margin: 10px 0;
+}
+input {
+    margin: 5px;
+    padding: 5px;
+    width: 150px;
+}
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.result {
+    margin-top: 10px;
+    font-weight: bold;
+}
