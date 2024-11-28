@@ -1,11 +1,12 @@
 let items = []; // Arreglo para almacenar los elementos
-let editIndex = null; // Índice del elemento que se está editando
+let editIndex = null; // Índice del elemento en edición
 
-// Función para renderizar la tabla
+// Función para mostrar la tabla
 function renderTable() {
   const tableBody = document.getElementById('itemTableBody');
-  tableBody.innerHTML = ''; // Limpiar el contenido actual
+  tableBody.innerHTML = ''; // Limpiar tabla
 
+  // Recorrer el arreglo y generar las filas
   items.forEach((item, index) => {
     const row = document.createElement('tr');
     row.innerHTML = `
@@ -20,7 +21,7 @@ function renderTable() {
   });
 }
 
-// Función para agregar un nuevo elemento
+// Función para agregar un elemento
 function addItem() {
   const input = document.getElementById('itemInput');
   const value = input.value.trim();
@@ -31,30 +32,30 @@ function addItem() {
   }
 
   if (editIndex !== null) {
-    // Si estamos editando, actualizamos el elemento
+    // Actualizar un elemento existente
     items[editIndex] = value;
     editIndex = null;
   } else {
-    // Si no estamos editando, agregamos el elemento
+    // Agregar un nuevo elemento al arreglo
     items.push(value);
   }
 
-  input.value = ''; // Limpiar el input
-  renderTable(); // Actualizar la tabla
+  input.value = ''; // Limpiar campo de entrada
+  renderTable(); // Actualizar tabla
 }
 
 // Función para editar un elemento
 function editItem(index) {
   const input = document.getElementById('itemInput');
-  input.value = items[index]; // Poner el valor actual en el input
-  editIndex = index; // Guardar el índice en edición
+  input.value = items[index]; // Mostrar el valor en el campo de entrada
+  editIndex = index; // Guardar el índice para editar
 }
 
 // Función para eliminar un elemento
 function deleteItem(index) {
   items.splice(index, 1); // Eliminar el elemento del arreglo
-  renderTable(); // Actualizar la tabla
+  renderTable(); // Actualizar tabla
 }
 
-// Renderizar la tabla inicial (vacía)
+// Mostrar la tabla inicial (vacía)
 renderTable();
