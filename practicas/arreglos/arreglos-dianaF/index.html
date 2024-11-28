@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Pokédex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png');
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .pokedex-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pokedex-header h1 {
+            color: #1b53ba;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+        }
+
+        .pokedex-header img {
+            width: 200px;
+            margin-bottom: 1rem;
+        }
+
+        .form-container {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            border: 2px solid rgba(27, 83, 186, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #1b53ba;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"], 
+        select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        input[type="text"]:focus, 
+        select:focus {
+            outline: none;
+            border-color: #1b53ba;
+            box-shadow: 0 0 0 4px rgba(27, 83, 186, 0.1);
+        }
+
+        input[type="text"]::placeholder {
+            color: #aaa;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%231b53ba' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 3rem;
+        }
+
+        .pokemon-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .pokemon-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 2px solid rgba(27, 83, 186, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pokemon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #1b53ba, #4CAF50);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pokemon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .pokemon-card:hover::before {
+            opacity: 1;
+        }
+
+        .pokemon-info h3 {
+            color: #1b53ba;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .pokemon-type {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 2px 10px rgba(76, 175, 80, 0.2);
+        }
+
+        .pokemon-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .pokemon-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .btn-edit, 
+        .btn-delete {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-edit {
+            background: linear-gradient(45deg, #ffd700, #ffc107);
+            color: #333;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .btn-edit:hover {
+            background: linear-gradient(45deg, #ffc107, #ffb300);
+            transform: translateY(-2px);
+        }
+
+        .btn-delete {
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.2);
+        }
+
+        .btn-delete:hover {
+            background: linear-gradient(45deg, #cc0000, #b30000);
+            transform: translateY(-2px);
+        }
+
+        /* Estilos para diferentes tipos de Pokémon */
+        .pokemon-type[data-type="Fuego"] { background: linear-gradient(45deg, #ff4422, #ff7755); }
+        .pokemon-type[data-type="Agua"] { background: linear-gradient(45deg, #3399ff, #5599ff); }
+        .pokemon-type[data-type="Planta"] { background: linear-gradient(45deg, #22cc22, #44ee44); }
+        .pokemon-type[data-type="Eléctrico"] { background: linear-gradient(45deg, #ffcc00, #ffdd44); }
+        .pokemon-type[data-type="Psíquico"] { background: linear-gradient(45deg, #ff44aa, #ff77cc); }
+        .pokemon-type[data-type="Dragón"] { background: linear-gradient(45deg, #7766ee, #9988ff); }
+        .pokemon-type[data-type="Fantasma"] { background: linear-gradient(45deg, #6666bb, #8888dd); }
+        .pokemon-type[data-type="Siniestro"] { background: linear-gradient(45deg, #775544, #997766); }
+
+        /* Animación de carga */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pokemon-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .pokemon-list {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pokemon-card {
+                padding: 1.5rem;
+            }
+        }
+
+        .btn-pokeball {
+            background: linear-gradient(45deg, #ff1f1f 50%, #f0f0f0 50%);
+            color: white;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 31, 31, 0.2);
+        }
+
+        .btn-pokeball::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #222;
+            z-index: 1;
+        }
+
+        .btn-pokeball::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border: 4px solid #222;
+            border-radius: 50%;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pokeball:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 31, 31, 0.3);
+        }
+
+        .btn-pokeball:hover::after {
+            background-color: #f0f0f0;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .btn-pokeball:active {
+            transform: translateY(0);
+        }
+
+        .btn-pokeball span {
+            position: relative;
+            z-index: 3;
+            background: #222;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            font-family: 'Pokemon Solid', 'Arial Black', sans-serif;
+            /* Fallback si la fuente Pokémon no carga */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-pokeball:hover span {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: #1a1a1a;
+        }
+
+        .btn-pokeball:active span {
+            transform: scale(0.95);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .btn-pokeball {
+                padding: 1rem 1.5rem;
+            }
+
+            .btn-pokeball span {
+                font-size: 0.9rem;
+                padding: 0.4rem 1.2rem;
+            }
+        }
+
+        .pokemon-sprite {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            display: block;
+            image-rendering: pixelated;
+            transition: transform 0.3s ease;
+        }
+
+        .pokemon-card:hover .pokemon-sprite {
+            transform: scale(1.1);
+            animation: bounce 0.5s ease infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0) scale(1.1); }
+            to { transform: translateY(-10px) scale(1.1); }
+        }
+
+        .pokemon-info {
+            text-align: center;
+        }
+
+        /* Ajustar el tamaño de la tarjeta para acomodar la imagen */
+        .pokemon-card {
+            padding: 1.5rem;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestor de Tareas</h1>
+        
+        <div class="form-container">
+            <div class="form-group">
+                <label for="pokemonName">Nombre del Pokémon</label>
+                <input type="text" id="pokemonName" placeholder="Escribe para buscar...">
+                <!-- Las sugerencias aparecerán aquí -->
+            </div>
+
+            <div class="form-group">
+                <label for="pokemonType">Tipo</label>
+                <input type="text" id="pokemonType" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="pokemonDescription">Descripción</label>
+                <input type="text" id="pokemonDescription" placeholder="Describe al Pokémon...">
+            </div>
+
+            <button onclick="agregarPokemon()" class="btn-pokeball">
+                <span>Capturar Pokémon</span>
+            </button>
+        </div>
+
+        <ul id="pokemonList" class="task-list">
+            <!-- Las tareas se agregarán aquí dinámicamente -->
+        </ul>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
